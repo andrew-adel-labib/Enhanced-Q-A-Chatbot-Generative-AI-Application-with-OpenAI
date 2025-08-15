@@ -38,9 +38,12 @@ max_tokens = st.sidebar.slider("Max Tokens", min_value=50, max_value=300, value=
 st.write("Go ahead and ask any question!")
 user_input = st.text_input("You: ")
 
-if user_input:
+if user_input and api_key:
     response = generate_response(user_input, api_key, llm, temperature, max_tokens)
     st.write(response)
 
+elif user_input:
+    st.warning("Please enter an Open AI API Key in the side bar!")
+
 else:
-    st.write("Please, Provide the query!")
+    st.write("Please, Provide the user input!")
